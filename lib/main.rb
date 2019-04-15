@@ -8,9 +8,8 @@ player1 = Player.new('Player_1', x = nil )
 player2 = Player.new('Player_2',x = player1.token)
 game = Game.new(player1,player2,board)
 game.switch_player
-game.populate_display
+board.populate_display
 until game.over?
   game.switch_player
   game.play_turn
-  game.populate_display
 end

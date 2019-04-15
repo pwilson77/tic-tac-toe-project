@@ -16,18 +16,19 @@ class Game
     location = get_location()
     board.update_field_values(current_player.token, location)
     current_player.add_cell(location)
+    @board.populate_display
   end
 
-  def populate_display
-    puts
-    puts "LEGEND:"
-    @board.draw_board(@board.legend_values)
-    puts "Use the legend to pick a space!"
-    puts
-    puts "GAME BOARD:"
-    @board.draw_board(@board.board_values)
-    puts
-  end
+  # def populate_display
+  #   puts
+  #   puts "LEGEND:"
+  #   @board.draw_board(@board.legend_values)
+  #   puts "Use the legend to pick a space!"
+  #   puts
+  #   puts "GAME BOARD:"
+  #   @board.draw_board(@board.board_values)
+  #   puts
+  # end
 
   def switch_player
     @current_player == @player_1  ? @current_player = @player_2 : @current_player = @player_1
@@ -52,34 +53,6 @@ class Game
   end
 
   private
-
-  # def welcome_player(player)
-  #   player_name = get_name(player)
-  #   player_token = get_token(player_name)
-  #   @player.new(player_name, player_token)
-  # end
-
-
-  # def get_name(player)
-  #   puts "Welcome, #{player}, what is your name?"
-  #   gets.chomp
-  # end
-
-  # def get_token(player_name)
-  #   if @selected_token.nil?
-  #     puts "Thanks #{player_name}! What token would you like, 'X' or 'O'?"
-  #     token = gets.chomp.upcase
-  #     while token != "X" && token != "O"
-  #       puts "That is not a valid entry, please select 'X' or 'O'."
-  #       token = gets.chomp.upcase
-  #     end
-  #     @selected_token = token
-  #   else
-  #     token = @selected_token == "X" ? "O" : "X"
-  #     puts "#{player_name}, your token will be '#{token}'"
-  #   end
-  #   token
-  # end
 
   def get_location
     puts "Your turn, #{current_player.name}! Choose a space."

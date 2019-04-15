@@ -18,6 +18,17 @@ class Board
     def update_field_values (token, location)
       @board_values[location - 1] = token
     end
+
+    def populate_display
+      puts
+      puts "LEGEND:"
+      draw_board(@legend_values)
+      puts "Use the legend to pick a space!"
+      puts
+      puts "GAME BOARD:"
+      draw_board(@board_values)
+      puts
+    end
   
   end
   
