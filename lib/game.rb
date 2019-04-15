@@ -13,22 +13,11 @@ class Game
   end
 
   def play_turn
-    location = get_location()
+    location = @current_player.get_location(current_player.name)
     board.update_field_values(current_player.token, location)
     current_player.add_cell(location)
     @board.populate_display
   end
-
-  # def populate_display
-  #   puts
-  #   puts "LEGEND:"
-  #   @board.draw_board(@board.legend_values)
-  #   puts "Use the legend to pick a space!"
-  #   puts
-  #   puts "GAME BOARD:"
-  #   @board.draw_board(@board.board_values)
-  #   puts
-  # end
 
   def switch_player
     @current_player == @player_1  ? @current_player = @player_2 : @current_player = @player_1
@@ -51,23 +40,4 @@ class Game
     end
     false
   end
-
-  private
-
-  def get_location
-    puts "Your turn, #{current_player.name}! Choose a space."
-    location = gets.chomp.to_i
-    until location.between?(1, 9) && @board.board_values[location - 1] == " "
-      unless location.between?(1, 9)
-        puts "You need to select a value from 1 to 9. Please select again:"
-        location = gets.chomp.to_i
-      end
-      unless @board.board_values[location - 1] == " "
-        puts "This location has already been selected. Try again:"
-        location = gets.chomp.to_i
-      end
-    end
-    location
-  end
-
 end
