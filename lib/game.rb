@@ -1,15 +1,14 @@
-require_relative 'player'
-require_relative 'board'
+#require_relative 'player'
+#require_relative 'board'
 
 class Game
 
   attr_reader :player_1, :player_2, :board, :current_player
 
-  def initialize
-    @selected_token = nil
-    @player_1 = welcome_player("player_1")
-    @player_2 = welcome_player("player_2")
-    @board = Board.new()
+  def initialize(player_1,player_2,board)
+    @player_1 = player_1
+    @player_2 = player_2
+    @board = board
     @current_player = @player_1
   end
 
@@ -54,32 +53,33 @@ class Game
 
   private
 
-  def welcome_player(player)
-    player_name = get_name(player)
-    player_token = get_token(player_name)
-    Player.new(player_name, player_token)
-  end
+  # def welcome_player(player)
+  #   player_name = get_name(player)
+  #   player_token = get_token(player_name)
+  #   @player.new(player_name, player_token)
+  # end
 
-  def get_name(player)
-    puts "Welcome, #{player}, what is your name?"
-    gets.chomp
-  end
 
-  def get_token(player_name)
-    if @selected_token.nil?
-      puts "Thanks #{player_name}! What token would you like, 'X' or 'O'?"
-      token = gets.chomp.upcase
-      while token != "X" && token != "O"
-        puts "That is not a valid entry, please select 'X' or 'O'."
-        token = gets.chomp.upcase
-      end
-      @selected_token = token
-    else
-      token = @selected_token == "X" ? "O" : "X"
-      puts "#{player_name}, your token will be '#{token}'"
-    end
-    token
-  end
+  # def get_name(player)
+  #   puts "Welcome, #{player}, what is your name?"
+  #   gets.chomp
+  # end
+
+  # def get_token(player_name)
+  #   if @selected_token.nil?
+  #     puts "Thanks #{player_name}! What token would you like, 'X' or 'O'?"
+  #     token = gets.chomp.upcase
+  #     while token != "X" && token != "O"
+  #       puts "That is not a valid entry, please select 'X' or 'O'."
+  #       token = gets.chomp.upcase
+  #     end
+  #     @selected_token = token
+  #   else
+  #     token = @selected_token == "X" ? "O" : "X"
+  #     puts "#{player_name}, your token will be '#{token}'"
+  #   end
+  #   token
+  # end
 
   def get_location
     puts "Your turn, #{current_player.name}! Choose a space."
