@@ -37,10 +37,4 @@ class Game
     end
     false
   end
-
-  # until game.over?
-  #   game.switch_player
-  #   game.play_turn
-  # end
-
 end
