@@ -4,7 +4,6 @@ class Player
     def initialize(name,selected,board)
       @board = board
       @selected_token = selected
-      # @name = welcome_player(name)
       @name = get_name(name)
       @token = get_token(@name)
       @cells_chosen = []
@@ -14,12 +13,9 @@ class Player
       @cells_chosen.push(cell_number)
     end
 
-    # def welcome_player(player)
-    #   player_name = get_name(player)
     def get_name(player)
       return player.name
     end
-    # end
   
     def get_name(player)
       puts "Welcome, #{player}, what is your name?"

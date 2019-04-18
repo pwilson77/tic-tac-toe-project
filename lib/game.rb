@@ -7,6 +7,7 @@ class Game
     @player_2 = player_2
     @board = board
     @current_player = @player_1
+    @board.populate_display
   end
 
   def play_turn
